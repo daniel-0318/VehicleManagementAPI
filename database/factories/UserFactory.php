@@ -25,8 +25,17 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'lastName' => fake()->lastName,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'identificationType' => fake()->randomElement(['CC', 'CE', 'RC']),
+            'identificationNumber' => fake()->unique()->numerify('##########'),
+            'gender' => fake()->randomElement(['male', 'female', null]),
+            'geoAddress' => fake()->randomElement(["3.896139, -76.288718","3.899950, -76.301979"]),
+            'phone' => fake()->phoneNumber,
+            'photoIdFront' => fake()->imageUrl(640, 480, 'people'),
+            'photoIdBack' => fake()->imageUrl(640, 480, 'people'),
+            'photoProfile' => fake()->imageUrl(640, 480, 'people'),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
