@@ -23,7 +23,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::middleware(['auth:sanctum'])->group(function(){
+Route::group(['prefix'=>'v1', "middleware"=>'auth:sanctum'],function(){
     Route::apiResource("vehicles",VehicleController::class);
     Route::put('user/update', [AuthController::class, 'update']);
     Route::get('user/show', [AuthController::class, 'show']);

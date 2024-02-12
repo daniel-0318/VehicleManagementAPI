@@ -9,6 +9,15 @@ class Vehicle extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "plate",
+        "model_year",
+        "configuration",
+        "body_type",
+        "image_path",
+        "user_id"
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
