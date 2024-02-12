@@ -22,8 +22,8 @@ class VehicleController extends Controller
         $rules = [
             "plate" => "required|string|min:4",
             "model_year"=> "required|numeric",
-            "configuration"=> "required|string",
-            "body_type"=> "required",
+            "configuration"=> "required|in:CA,2,3,4,2S2,2S3,2S4,3S3",
+            "body_type"=> "required|in:Furgón,Volco,Tanque,Estacas,Porta Contenedor",
             "image_path"=> "string",
           ];
       
