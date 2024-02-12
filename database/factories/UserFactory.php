@@ -25,7 +25,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'lastName' => fake()->lastName,
+            'lastname' => fake()->lastname,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'identificationType' => fake()->randomElement(['CC', 'CE', 'RC']),

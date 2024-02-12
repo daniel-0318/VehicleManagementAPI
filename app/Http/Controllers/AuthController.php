@@ -14,10 +14,13 @@ class AuthController extends Controller
   public function register(Request $request){
 
     $validator = Validator::make($request->all(),[
-      'name' => 'required|string|max:50',
-      'lastName' => 'required|string|max:50',
       'email' => 'required|string|email|unique:users',
+      'identificationNumber'=>'required|string',
+      'identificationType'=>'required|in:CC,CE,RC',
+      'lastname' => 'required|string|max:50',
+      'name' => 'required|string|max:50',
       'password' => 'required|string|min:6',
+      'phone'=>'required|string',
     ]);
 
     if($validator->fails()){
@@ -25,13 +28,13 @@ class AuthController extends Controller
     }
 
     $user = User::create([
-      'name' => $request->name,
-      'lastName' => "$request->lastName",
       'email' => $request->email,
-      'phone' => $request->phone,
-      'identificationType' => $request->identificationType,
       'identificationNumber' => $request->identificationNumber,
+      'identificationType' => $request->identificationType,
+      'lastname' => "$request->lastname",
+      'name' => $request->name,
       'password' => Hash::make($request->password),
+      'phone' => $request->phone,
     ]);
 
     $user->sendEmailVerificationNotification();
