@@ -55,12 +55,14 @@ class AuthController extends Controller
     if (Auth::attempt($request->only("email", "password"))) {
       return response()->json([
         'token' => $request->user()->createToken('auth_token')->plainTextToken,
-        'message' => 'Sucess'
+        'message' => 'Sucess',
+        'status' => 'fail',
       ], 200);
     }
 
     return response()->json([
-      'message' => 'Unauthorized'
+      'message' => 'Unauthorized',
+      'status' => 'success',
     ], 401);
   }
 
