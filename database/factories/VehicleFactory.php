@@ -22,7 +22,7 @@ class VehicleFactory extends Factory
             'model_year' => $this->faker->year,
             'configuration' => $this->faker->randomElement(['CA', '2', '3', '4', '2S2', '2S3', '2S3', '3S3']),
             'body_type' => $this->faker->randomElement(['Furgón', 'Volco', 'Tanque', 'Estacas', 'Porta Contenedor']),
-            'image_path' => $this->faker->imageUrl(640, 480, 'transport'),
+            'image' => $this->faker->imageUrl(640, 480, 'transport'),
             'user_id' => User::factory(),
         ];
     }

@@ -14,7 +14,7 @@ class Vehicle extends Model
         "model_year",
         "configuration",
         "body_type",
-        "image_path",
+        "image",
         "user_id"
     ];
 

@@ -44,6 +44,11 @@ class AuthController extends Controller
 
   }
 
+  public function show(){
+    $user = Auth::user();
+    return $user;
+  }
+
   public function validateLogin(Request $request) {
     return $request->validate([
       "email" => "required|email",
@@ -58,8 +63,8 @@ class AuthController extends Controller
     if (Auth::attempt($request->only("email", "password"))) {
       return response()->json([
         'token' => $request->user()->createToken('auth_token')->plainTextToken,
-        'message' => 'Sucess',
-        'status' => 'fail',
+        'message' => 'user login',
+        'status' => 'sucess',
       ], 200);
     }
 
@@ -72,5 +77,14 @@ class AuthController extends Controller
   public function logout(){
     Auth::logout();
     return response()->json(['message'=> 'Sucess'],200);
+  }
+
+  public function update(Request $request){
+    $user = Auth::user();
+    $user->update($request->all());
+    return response()->json([
+      'message' => 'user updated',
+      'status' => 'success',
+    ], 200);
   }
 }

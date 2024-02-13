@@ -17,7 +17,7 @@ return new class extends Migration
             $table->year('model_year');
             $table->string('configuration');
             $table->string('body_type');
-            $table->string('image_path')->nullable();
+            $table->longText('image')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
