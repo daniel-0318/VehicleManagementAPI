@@ -53,7 +53,7 @@ class VehicleController extends Controller
     $field['model_year'] = $request->model_year;
     $field['configuration'] = $request->configuration;
     $field['body_type'] = $request->body_type;
-    $field['image'] = $request->image_path;
+    $field['image'] = $request->image;
     $field['user_id'] = $user->id;
     $vehicle = Vehicle::create($field);
 
